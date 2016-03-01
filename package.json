@@ -1,0 +1,19 @@
+{
+  "name": "estore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^3.3.6",
+    "gulp": "^3.9.1",
+    "gulp-live-server": "0.0.29",
+    "gulp-sass": "^2.2.0",
+    "jquery": "^2.2.1",
+    "material-design-icons": "^2.1.3"
+  }
+}

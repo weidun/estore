@@ -1,0 +1,152 @@
+@charset "UTF-8"
+
+html
+  height: 100%
+
+body
+  position: relative
+  margin: 0
+  padding: 0
+  height: 100%
+  font-size: 14px
+  flex-direction: row
+  display: flex
+
+.layout-row
+  flex-direction: row
+
+.layout-column
+  flex-direction: column
+
+.flex
+  display: flex
+  flex-grow: 1
+
+.btn-icon
+  width: 40px
+  height: 40px
+  line-height: 24px
+  padding: 8px
+  border: none
+  background: transparent
+  outline: 0
+  cursor: pointer
+
+.side-nav
+  display: flex
+  width: 240px
+  flex-direction: column
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, .4)
+  z-index: 9
+
+.side-nav .toolbar
+  background: deepskyblue
+  background: url("/images/Android-L-Material-Design-Wallpapers-5.png") no-repeat center
+  background-size: cover
+  color: #fff
+
+.side-nav .toolbar .avatar
+  display: block
+  margin: 10px 0
+  width: 64px
+  height: 64px
+
+.side-nav .toolbar .avatar > img
+  width: 100%
+  height: 100%
+
+.content
+  display: flex
+  flex-grow: 1
+  flex-direction: column
+
+.toolbar
+  display: flex
+  flex-direction: column
+  background: #08e
+  padding: 0 16px
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, .4)
+  z-index: 8
+  min-height: 64px
+
+.toolbar h1
+  margin: 0
+
+.toolbar-tools
+  display: flex
+  height: 64px
+  flex-direction: row
+  flex-grow: 1
+  align-items: center
+  color: #fff
+
+.toolbar-tools .title
+  margin: 0
+  padding: 0
+
+ul.menu-list .divider
+  height: 0
+  border-bottom: 1px solid #eee
+
+ul.menu-list .heading
+  color: #666
+  padding: 0 16px
+  line-height: 30px
+
+ul.menu-list,
+ul.menu-list ul
+  list-style: none
+  margin: 0
+  padding: 0
+
+ul.menu-list
+  margin: 10px 0
+
+ul.menu-list div
+  display: flex
+  flex-direction: row
+  align-items: center
+  height: 48px
+
+ul.menu-list div:hover
+  background: rgba(0, 0, 0, .1)
+
+ul.menu-list > li > ul > li > div
+  padding-left: 48px
+
+ul.menu-list a,
+ul.menu-list span
+  line-height: 24px
+  color: #333
+  text-decoration: none
+  outline: none
+
+#view
+  overflow-y: auto
+
+.pic-preview
+  display: block
+  margin: 0
+  padding: 0
+  border: 0
+  background: transparent
+
+.pic-preview:after,
+.pic-preview:before
+  content: ''
+  display: table
+  clear: both
+
+.pic-preview > img
+  float: left
+  display: block
+  margin: 0 4px
+  max-width: 120px
+  border: 1px solid #eee
+
+.padding
+  padding: 10px
+
+.container-customized
+  padding: 0 30px
+//overflow: hidden
