@@ -1,31 +1,43 @@
 var routes = {}
 var default_path = ""
-
+var view_id = "view"
 addEventListener("hashchange", function () {
     goto()
 })
 addEventListener("load", function () {
     goto()
 })
-function goto() {
+function goto(request_path, message) {
     var path = location.hash.substr(1)
-    if (routes[path]) {
+    if (routes[request_path]) {
         render({
-            id: "view",
-            templateUrl: routes[path].templateUrl,
-            success: routes[path].func
+            id: view_id,
+            templateUrl: routes[request_path].templateUrl,
+            message: message || {},
+            success: routes[request_path].func
         })
+        location.hash = request_path
     }
     else {
-        location.hash = default_path
-        if (routes[default_path]) {
+        if (routes[path]) {
             render({
-                id: "view",
-                templateUrl: routes[default_path].templateUrl,
-                success: routes[default_path].func
+                id: view_id,
+                templateUrl: routes[path].templateUrl,
+                success: routes[path].func
             })
         }
+        else {
+            location.hash = default_path
+            if (routes[default_path]) {
+                render({
+                    id: view_id,
+                    templateUrl: routes[default_path].templateUrl,
+                    success: routes[default_path].func
+                })
+            }
+        }
     }
+
 }
 function render(obj) {
     if (obj.id && obj.templateUrl) {
@@ -34,7 +46,8 @@ function render(obj) {
             url: obj.templateUrl,
         }).success(function (r) {
             if (typeof obj.success == "function") {
-                $("#" + obj.id).html(r).promise().done(obj.success)
+                $("#" + obj.id).html(r)
+                new obj.success(obj.message)
             }
             else {
                 $("#" + obj.id).html(r)
@@ -65,7 +78,7 @@ var route_provider = new Object({
 route_provider
     .when("/dashboard", {
         templateUrl: "/templates/dashboard.html",
-        func: dashboard
+        func: Dashboard
     })
     .when("/products/retrieve", {
         templateUrl: "/templates/products/retrieve.html"
@@ -76,5 +89,10 @@ route_provider
     .when("/products/create", {
         templateUrl: "/templates/products/create.html",
         func: products_create
+    })
+
+    .when("/test", {
+        func: TestClass,
+        templateUrl: "/templates/test.html"
     })
     .otherwise("/dashboard")

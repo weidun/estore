@@ -1,4 +1,4 @@
-function dashboard() {
+function Dashboard() {
     var chart = new CanvasJS.Chart("simple_column_chart",
         {
             title: {
@@ -62,4 +62,7 @@ function products_create() {
     image_preview("thumb", "thumb_preview")
     image_preview("carousel", "carousel_preview")
     image_preview("detail", "detail_preview")
+}
+function TestClass(message) {
+    console.log(typeof message)
 }
