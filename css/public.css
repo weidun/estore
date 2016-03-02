@@ -1,0 +1,168 @@
+html {
+  height: 100%; }
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 14px;
+  flex-direction: row;
+  display: flex; }
+
+.layout-row {
+  flex-direction: row; }
+
+.layout-column {
+  flex-direction: column; }
+
+.flex {
+  display: flex;
+  flex-grow: 1; }
+
+.white-frame {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); }
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  line-height: 24px;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  outline: 0;
+  cursor: pointer; }
+
+.side-nav {
+  display: flex;
+  width: 240px;
+  flex-direction: column;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.4);
+  z-index: 9; }
+
+.sidebar .avatar {
+  display: block;
+  margin: 10px 0;
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: pink;
+  overflow: hidden; }
+
+.sidebar .avatar > img {
+  width: 100%;
+  height: 100%;
+  border: none;
+  vertical-align: middle; }
+
+.content {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  overflow: auto; }
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  background: #08e;
+  padding: 0 16px;
+  border: none;
+  margin: 0;
+  min-height: 64px;
+  color: #fff; }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px; }
+
+.toolbar-tools {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+  color: #fff; }
+
+.toolbar-tools .title {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+.list {
+  margin: 0;
+  border: 0;
+  padding: 10px 0; }
+
+.list .list-item {
+  display: flex;
+  flex-direction: row;
+  margin: 4px 0;
+  border: 0;
+  padding: 0;
+  align-items: center; }
+
+.list .list-item:hover {
+  background: rgba(0, 0, 0, 0.1); }
+
+.list .list-item > .icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center; }
+
+.list .list-item > *:not(.icon) {
+  display: flex;
+  flex-grow: 1;
+  line-height: 30px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap; }
+
+.list .divider {
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #eee; }
+
+.list .subhead {
+  color: #666;
+  padding: 0 16px;
+  line-height: 30px; }
+
+.pic-preview {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent; }
+
+.pic-preview:after,
+.pic-preview:before {
+  content: '';
+  display: table;
+  clear: both; }
+
+.pic-preview > img {
+  float: left;
+  display: block;
+  margin: 0 4px;
+  max-width: 120px;
+  border: 1px solid #eee; }
+
+.padding {
+  padding: 10px; }
+
+.container-customized {
+  padding: 0 30px; }
+
+.sidebar-toolbar {
+  background: deepskyblue;
+  background: url("/images/htc-background.jpg") no-repeat center;
+  background-size: cover;
+  color: #fff; }
