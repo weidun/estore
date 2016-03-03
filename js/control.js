@@ -30,9 +30,8 @@ function Dashboard() {
         }
     )
     chart.render()
-
 }
-function products_create() {
+function Products_create(p) {
     function image_preview(input_id, preview_id) {
         var input = document.querySelector("#" + input_id)
         var preview = document.querySelector("#" + preview_id)
@@ -62,7 +61,13 @@ function products_create() {
     image_preview("thumb", "thumb_preview")
     image_preview("carousel", "carousel_preview")
     image_preview("detail", "detail_preview")
+    console.log(p)
 }
 function TestClass(message) {
     console.log(typeof message)
+}
+function Retrieve(p) {
+    $("#search_button").on("click", function () {
+        alert("search")
+    })
 }

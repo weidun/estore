@@ -1,5 +1,3 @@
-var routes = {}
-var default_path = ""
 var view_id = "view"
 addEventListener("hashchange", function () {
     goto()
@@ -7,61 +5,70 @@ addEventListener("hashchange", function () {
 addEventListener("load", function () {
     goto()
 })
-function goto(request_path, message) {
-    var path = location.hash.substr(1)
-    if (routes[request_path]) {
-        render({
+function goto() {
+    var current_path = location.hash.substr(1).split("?")[0]
+    var current_parameters = location.hash.substr(1).split("?")[1]
+    var parameters = {}
+    if (current_parameters) {
+        var parameters_list = current_parameters.split("&")
+        for (var i in parameters_list) {
+            parameters[parameters_list[i].split("=")[0]] = parameters_list[i].split("=")[1]
+        }
+    }
+
+    if (routes[current_path]) {
+        new Render({
             id: view_id,
-            templateUrl: routes[request_path].templateUrl,
-            message: message || {},
-            success: routes[request_path].func
+            templateUrl: routes[current_path].templateUrl,
+            success: function () {
+                if (typeof routes[current_path].Control == "function") {
+                    new routes[current_path].Control(parameters)
+                }
+            }
         })
-        location.hash = request_path
     }
     else {
-        if (routes[path]) {
-            render({
+        location.hash = default_path
+        if (routes[default_path]) {
+            new Render({
                 id: view_id,
-                templateUrl: routes[path].templateUrl,
-                success: routes[path].func
+                templateUrl: routes[default_path].templateUrl,
+                success: function () {
+                    if (typeof routes[default_path].Control == "function") {
+                        new routes[default_path].Control(parameters)
+                    }
+                }
             })
         }
-        else {
-            location.hash = default_path
-            if (routes[default_path]) {
-                render({
-                    id: view_id,
-                    templateUrl: routes[default_path].templateUrl,
-                    success: routes[default_path].func
-                })
-            }
-        }
     }
 
+
 }
-function render(obj) {
-    if (obj.id && obj.templateUrl) {
+
+function Render(config) {
+    if (config.id && config.templateUrl) {
+        var view_content = $("#" + config.id)
         $.ajax({
             method: "GET",
-            url: obj.templateUrl,
+            url: config.templateUrl
         }).success(function (r) {
-            if (typeof obj.success == "function") {
-                $("#" + obj.id).html(r)
-                new obj.success(obj.message)
+                view_content.html(r)
+                if (typeof config.success == "function") {
+                    config.success()
+                }
             }
-            else {
-                $("#" + obj.id).html(r)
+        ).error(function () {
+                view_content.html("加载失败")
+                if (typeof config.error == "function") {
+                    config.error()
+                }
             }
-        }).error(function (r) {
-            $("#" + obj.id).html("加载失败")
-            console.log(r)
-            if (typeof obj.error == "function") {
-                obj.error()
-            }
-        })
+        )
     }
 }
 
+var routes = {}
+var default_path = ""
 
 var route_provider = new Object({
     when: function (path, route) {
@@ -77,22 +84,23 @@ var route_provider = new Object({
 
 route_provider
     .when("/dashboard", {
-        templateUrl: "/templates/dashboard.html",
-        func: Dashboard
+        templateUrl: "templates/dashboard.html",
+        Control: Dashboard
     })
     .when("/products/retrieve", {
-        templateUrl: "/templates/products/retrieve.html"
+        templateUrl: "templates/products/retrieve.html",
+        Control: Retrieve
     })
     .when("/products/modify", {
-        templateUrl: "/templates/products/modify.html"
+        templateUrl: "templates/products/modify.html"
     })
     .when("/products/create", {
-        templateUrl: "/templates/products/create.html",
-        func: products_create
+        templateUrl: "templates/products/create.html",
+        Control: Products_create
     })
 
     .when("/test", {
-        func: TestClass,
-        templateUrl: "/templates/test.html"
+        templateUrl: "templates/test.html",
+        Control: TestClass,
     })
     .otherwise("/dashboard")

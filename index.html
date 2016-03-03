@@ -5,31 +5,21 @@
     <title>后台管理</title>
     <meta name="viewport" content="width=device-width">
     <style>
-        @import "/node_modules/bootstrap/dist/css/bootstrap.css";
-        @import "/node_modules/material-design-icons/iconfont/material-icons.css";
-        @import "/css/public.css";
+        @import "node_modules/bootstrap/dist/css/bootstrap.css";
+        @import "node_modules/material-design-icons/iconfont/material-icons.css";
+        @import "css/public.css";
     </style>
 </head>
 <body>
 <div class="sidebar white-frame">
     <div class="toolbar sidebar-toolbar">
         <div class="avatar">
-            <img src="/images/avatar-female.png">
+            <img src="images/avatar-female.png">
         </div>
         <h4><strong>Username</strong></h4>
-        <h5>email@domainname.com</h5>
     </div>
     <div class="content">
         <ul class="list">
-            <li class="list-item">
-                <i class="icon material-icons">dashboard</i>
-                <a href="#/dashboard">Dashboard</a>
-            </li>
-            <li class="list-item">
-                <i class="icon material-icons">error</i>
-                <a href="#/error">错误地址</a>
-            </li>
-            <li class="divider"></li>
             <li class="subhead">产品管理</li>
 
             <li class="list-item">
@@ -40,13 +30,13 @@
                 <i class="icon material-icons">add</i>
                 <a href="#/products/create">商品创建</a>
             </li>
-            <li class="divider"></li>
-            <li class="subhead">会员管理</li>
-            <li class="list-item">
-                <i class="icon material-icons">people</i>
-                <a>会员查询</a>
-            </li>
-            <li class="divider"></li>
+            <!--<li class="divider"></li>-->
+            <!--<li class="subhead">会员管理</li>-->
+            <!--<li class="list-item">-->
+                <!--<i class="icon material-icons">people</i>-->
+                <!--<a>会员查询</a>-->
+            <!--</li>-->
+            <!--<li class="divider"></li>-->
         </ul>
     </div>
 </div>
@@ -72,10 +62,27 @@
     </div>
     <div class="content" id="view"></div>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-<script src="/node_modules/jquery/dist/jquery.js"></script>
-<script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-<script src="/libs/canvasjs/canvasjs.js"></script>
-<script src="/js/control.js"></script>
-<script src="/js/app.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="libs/canvasjs/canvasjs.js"></script>
+<script src="js/control.js"></script>
+<script src="js/app.js"></script>
 </html>
