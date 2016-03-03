@@ -70,4 +70,11 @@ function Retrieve(p) {
     $("#search_button").on("click", function () {
         alert("search")
     })
+    function delete_item() {
+        layer.confirm("删除该条信息", {}, function () {
+            console.log("yes")
+        })
+    }
+
+    $("tr td").on("click", delete_item)
 }
